@@ -14,12 +14,15 @@ public class CreateTable {
 
     public String createTableStatus() {
         jdbcTemplate.execute("DROP TABLE IF EXISTS films");
-        jdbcTemplate.execute("CREATE TABLE PUBLIC.films \n" +
+        jdbcTemplate.execute("CREATE TABLE public.films \n" +
                 "(\n" +
-                "id INTEGER  NOT NULL ,) \n" +
-                "name CHARACTER  VARYING (255) NOT NULL, \n" +
-                "CONSTRAINT firstkey PRIMARY KEY (id) \n" +
-                ");");
+                "  id integer NOT NULL,\n" +
+                "  name character varying(255),\n" +
+                "  size integer NOT NULL ,\n" +
+                "  description character varying(255),\n" +
+                "  time integer,\n" +
+                "  CONSTRAINT films_pkey PRIMARY KEY (id)\n" +
+                ")");
         return "table created";
     }
 }

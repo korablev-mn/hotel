@@ -1,7 +1,6 @@
 package io.khasang.hotel.config;
 
-import io.khasang.hotel.model.CreateTable;
-import io.khasang.hotel.model.Message;
+import io.khasang.hotel.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @PropertySource(value = "classpath:util.properties")
 public class AppConfig {
     @Bean
-    public Message message(){
+    public Message message() {
         return new Message("Jack");
     }
 
@@ -31,13 +30,37 @@ public class AppConfig {
         return dataSource;
     }
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
     @Bean
-    public CreateTable createTable(){
+    public CreateTable createTable() {
         return new CreateTable(jdbcTemplate());
+    }
+    @Bean
+    public SelectTable selectTable() {
+        return new SelectTable(jdbcTemplate());
+    }
+    @Bean
+    public InsertTable insertTable() {
+        return new InsertTable(jdbcTemplate());
+    }
+    @Bean
+    public UpdateTable updateTable() {
+        return new UpdateTable(jdbcTemplate());
+    }
+    @Bean
+    public DeleteTable deleteTable() {
+        return new DeleteTable(jdbcTemplate());
+    }
+    @Bean
+    public JoinTable joinTable() {
+        return new JoinTable(jdbcTemplate());
+    }
+    @Bean
+    public CaseTable caseTable() {
+        return new CaseTable(jdbcTemplate());
     }
 }

@@ -13,6 +13,11 @@
 <body>
 <h1>Try to create table</h1>
 <p>${status}</p>
-
+<p>${select}</p>
+<p>${insert}</p>
+<p>${update}</p>
+<p>${join}</p>
+<p>${case}</p>
+<p>${delete}</p>
 </body>
 </html>
