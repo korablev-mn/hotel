@@ -2,9 +2,12 @@ package io.khasang.hotel.controller;
 
 import io.khasang.hotel.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -56,5 +59,10 @@ public class AppController {
     @RequestMapping("/admin")
     public String adminPage(){
         return "admin";
+    }
+    @ResponseBody
+    @RequestMapping(value = {"/password/{password}"}, method = RequestMethod.GET)
+    public String getPassword(@PathVariable("password") String password){
+        return new BCryptPasswordEncoder().encode(password);
     }
 }
