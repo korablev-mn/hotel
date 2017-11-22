@@ -35,9 +35,9 @@ public class AppController {
 
     // http://localhost:8080/
     @RequestMapping("/")
-    public String helloPage(Model model){
-        model.addAttribute("name", message.getNameInfo("Jack Vorobei"));
-        return "hello";
+    public String helloPage(){
+      //  model.addAttribute("name", message.getNameInfo("Jack Vorobei"));
+        return "cat";
     }
     @RequestMapping("/create")
     public String tableCreationInfo(Model model){
